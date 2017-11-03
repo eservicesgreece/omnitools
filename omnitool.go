@@ -75,7 +75,7 @@ func main() {
 		if viper.IsSet("accounts."+*accountUname+".pass") == false {
 			fmt.Println("Account doesnt exist in omnitool.json")
 		} else {
-			fmt.Println(accountinfo("https://www.omnivoice.eu/", *accountUname, viper.GetString("accounts."+*accountUname+".pass"), *accountRInfo))
+			fmt.Println(accountinfo(viper.GetString("general.baseURL"), *accountUname, viper.GetString("accounts."+*accountUname+".pass"), *accountRInfo))
 		}
 
 	case config.FullCommand():
