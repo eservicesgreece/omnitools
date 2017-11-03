@@ -40,8 +40,7 @@ Commands:
     account
 
   configdump
-    Dump all entries in configuration
-    Install cacti-go-tools                                            
+    Dump all entries in configuration                                          
 ```
 
 ## Configuration
