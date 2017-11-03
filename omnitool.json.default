@@ -1,6 +1,8 @@
 {
     "appname": "omnitool",
-    "general": {},
+    "general": {
+        "baseURL": "https://www.omnivoice.eu/"
+    },
     "accounts": {
         "VOIP Account 1": {
             "pass": "-"
