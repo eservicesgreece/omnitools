@@ -46,3 +46,18 @@ Commands:
 ## Configuration
 The tool retrieves its configuration from the omnitool.json file, you can place it in your $HOME or /etc/omnitool/ .
 
+## omnitool.json  Example
+```json
+{                                    
+    "appname": "omnitool",           
+    "general": {},                   
+    "accounts": {                    
+        "999999": {                  
+            "pass": "123456"       
+        },                           
+        "888888": {                  
+            "pass": "123456"
+        }                            
+    }                                
+}                                    
+```
