@@ -1,0 +1,12 @@
+{
+    "appname": "omnitool",
+    "general": {},
+    "accounts": {
+        "VOIP Account 1": {
+            "pass": "-"
+        },
+        "VOIP Account 2": {
+            "pass": "-"
+        }
+    }
+}
