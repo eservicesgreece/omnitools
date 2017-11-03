@@ -72,7 +72,11 @@ func main() {
 	switch kingpin.MustParse(app.Parse(os.Args[1:])) {
 
 	case account.FullCommand():
-		fmt.Println(accountinfo("https://www.omnivoice.eu/", *accountUname, viper.GetString("accounts."+*accountUname+".pass"), *accountRInfo))
+		if viper.IsSet("accounts."+*accountUname+".pass") == false {
+			fmt.Println("Account doesnt exist in omnitool.json")
+		} else {
+			fmt.Println(accountinfo("https://www.omnivoice.eu/", *accountUname, viper.GetString("accounts."+*accountUname+".pass"), *accountRInfo))
+		}
 
 	case config.FullCommand():
 		dumpConfig()
