@@ -17,12 +17,12 @@ var ver = "esgtools v" + version + "\n Build: " + buildstamp + "\n GIT: " + hash
 var (
 	app = kingpin.New("omnitool", ver)
 
-	account      = app.Command("account", "account")
+	account      = kingpin.Command("account", "account")
 	accountUname = account.Arg("accountuname", "Account ID").Required().String()
 	accountPass  = account.Arg("password", "Account Password").String()
-	accountRInfo = account.Flag("RI", "credit,tax").String()
+	accountRInfo = account.Flag("ri", "credit,tax").Short('r').String()
 
-	config = app.Command("configdump", "Dump all entries in configuration")
+	config = kingpin.Command("configdump", "Dump all entries in configuration")
 )
 
 func checkIfIsMap(typeFC interface{}) bool {
@@ -67,15 +67,23 @@ func main() {
 	kingpin.CommandLine.HelpFlag.Short('h')
 	kingpin.CommandLine.VersionFlag.Short('v')
 
+	var appFlags = kingpin.Parse()
+
 	setupConfig()
 
-	switch kingpin.MustParse(app.Parse(os.Args[1:])) {
+	//switch kingpin.MustParse(app.Parse(os.Args[1:])) {
+	switch appFlags {
 
 	case account.FullCommand():
-		if viper.IsSet("accounts."+*accountUname+".pass") == false {
-			fmt.Println("Account doesnt exist in omnitool.json")
+		if *accountPass != "" {
+			fmt.Println(accountinfo(viper.GetString("general.baseURL"), *accountUname, *accountPass, *accountRInfo))
 		} else {
-			fmt.Println(accountinfo(viper.GetString("general.baseURL"), *accountUname, viper.GetString("accounts."+*accountUname+".pass"), *accountRInfo))
+
+			if viper.IsSet("accounts."+*accountUname+".pass") == false {
+				fmt.Println("Account doesnt exist in omnitool.json")
+			} else {
+				fmt.Println(accountinfo(viper.GetString("general.baseURL"), *accountUname, viper.GetString("accounts."+*accountUname+".pass"), *accountRInfo))
+			}
 		}
 
 	case config.FullCommand():
