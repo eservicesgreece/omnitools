@@ -45,5 +45,4 @@ func accountinfo(url, user, pass, info string) string {
 	}
 
 	return out
-
 }
