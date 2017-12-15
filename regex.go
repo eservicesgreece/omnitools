@@ -8,12 +8,16 @@ import (
 func parseAccountInfo(input string) []string {
 	var ACINFO = regexp.MustCompile(`[0-9]+.[0-9]+`)
 	var out []string
+	out = make([]string, 1)
 
-	if strings.Contains(input, "not enough credits") {
-		out = make([]string, 1)
+	switch ercheck := input; {
+	case strings.Contains(ercheck, "not enough credits"):
 		out[0] = "No Credit"
-	} else {
 
+	case strings.Contains(ercheck, "Authentication error"):
+		out[0] = "Authentication Error"
+
+	default:
 		ACObj := ACINFO.FindAllStringSubmatch(input, -1)
 
 		out = make([]string, len(ACObj))

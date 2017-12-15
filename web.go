@@ -42,6 +42,7 @@ func accountinfo(url, user, pass, info string) string {
 		}
 	} else {
 		fmt.Println("Improper Result")
+		fmt.Println(string(message))
 	}
 
 	return out
