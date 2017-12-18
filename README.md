@@ -40,19 +40,19 @@ Commands:
 ```
 
 ## usage examples
-# get full account (credits, account, tax rate)
+### get full account (credits, account, tax rate)
 ```bash
 ./omnitool account 123456 1234567890
 18.97,123456,24.00
 ```
 
-# get full account (credits, account, tax rate) of stored account (in json config)
+### get full account (credits, account, tax rate) of stored account (in json config)
 ```bash
 ./omnitool account 123456
 18.97,123456,24.00
 ```
 
-# get just the credits
+### get just the credits
 ```bash
 ./omnitool account 123456 1234567890 -r credit
 18.97
