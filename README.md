@@ -21,16 +21,12 @@ go get github.com/eservicesgreece/omnitools
 
 ## Usage
 ```bash
-usage: omnitool [<flags>] <command> [<args> ...]
-
-esgtools v
-
-  Build:
-  GIT:
-  Copyright (c) 2016-8 eServices Greece - https://eservices-greece.com
+usage: omnitool_windows_amd64.exe [<flags>] <command> [<args> ...]
 
 Flags:
-  --help  Show context-sensitive help (also try --help-long and --help-man).
+  -h, --help     Show context-sensitive help (also try --help-long and
+                 --help-man).
+  -v, --version  Show application version.
 
 Commands:
   help [<command>...]
@@ -40,7 +36,26 @@ Commands:
     account
 
   configdump
-    Dump all entries in configuration                                          
+    Dump all entries in configuration                                    
+```
+
+##usage examples
+#get full account (credits, account, tax rate)
+```bash
+./omnitool account 123456 1234567890
+18.97,123456,24.00
+```
+
+#get full account (credits, account, tax rate) of stored account (in json config)
+```bash
+./omnitool account 123456
+18.97,123456,24.00
+```
+
+#get just the credits
+```bash
+./omnitool account 123456 1234567890 -r credit
+18.97
 ```
 
 ## Configuration
