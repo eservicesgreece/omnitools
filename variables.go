@@ -15,5 +15,13 @@ var (
 	accountPass  = account.Arg("password", "Account Password").String()
 	accountRInfo = account.Flag("ri", "credit,tax").Short('r').String()
 
+	sms          = kingpin.Command("sms", "SMS")
+	smsUname     = sms.Arg("accountname", "Accound ID").Required().String()
+	smsPass      = sms.Arg("password", "Account Password").String()
+	smsMessage   = sms.Arg("message", "Message (max 159 Characters)").String()
+	smsSender    = sms.Arg("sender", "Sender ID or Number").String()
+	smsRecipient = sms.Arg("recipient", "One or more phone numbers").String()
+	smsSend      = sms.Flag("st", "Send Type: send, cost, test").Short('s').String()
+
 	config = kingpin.Command("configdump", "Dump all entries in configuration")
 )
